@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Для Алёны 💖</title>
+
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;overflow:hidden;font-family:system-ui,-apple-system,BlinkMacSystemFont,sans-serif}
+body{
+  background: radial-gradient(1200px 600px at 50% -10%, #5b1b7a, #120018);
+  color:#fff;
+}
+section{
+  position:absolute; inset:0;
+  display:none; align-items:center; justify-content:center;
+  text-align:center; padding:24px;
+}
+section.active{display:flex}
+.card{
+  max-width:520px; width:100%;
+  background:rgba(255,255,255,.08);
+  border-radius:28px; padding:28px;
+  backdrop-filter: blur(10px);
+  box-shadow:0 20px 60px rgba(0,0,0,.35);
+}
+h1{margin:0 0 16px}
+p{line-height:1.5}
+small{opacity:.7}
+.btn{
+  border:none; border-radius:999px;
+  padding:14px 22px; font-size:18px;
+  cursor:pointer; margin:8px;
+}
+.yes{background:#ff4d6d;color:#fff}
+.no{background:#333;color:#fff;position:absolute}
+.cat{margin:16px 0}
+input{
+  width:100%; padding:14px 16px;
+  border-radius:999px; border:none;
+  font-size:16px; margin-top:12px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- p1 -->
+<section class="active" id="p1">
+  <div class="card">
+    <h1>Алёна, ты меня любишь? 💕</h1>
+    <button class="btn yes" onclick="go('p2')">ДА</button>
+    <button class="btn no" id="noBtn">НЕТ</button>
+  </div>
+</section>
+
+<!-- p2 -->
+<section id="p2">
+  <div class="card">
+    <h1>Это миии 💗</h1>
+    <img src="https://raw.githubusercontent.com/cernysevegor1-pixel/123-/main/cat-cats.gif" width="180">
+    <img src="https://raw.githubusercontent.com/cernysevegor1-pixel/123-/main/i-love-you-cat.gif" width="180">
+    <br>
+    <button class="btn yes" onclick="go('p3')">Дальше</button>
+  </div>
+</section>
+
+<!-- p3 первый ребус -->
+<section id="p3">
+  <div class="card">
+    <h1>Разгадай ребус</h1>
+    <p>❤️ + 🐱 = ?</p>
+    <input id="answer" placeholder="введи ответ">
+    <button class="btn yes" onclick="check()">Готово</button>
+  </div>
+</section>
+
+<!-- p3b пауза -->
+<section id="p3b">
+  <div class="card">
+    <p>
+      Иногда не нужны слова<br>
+      достаточно просто знать<br>
+      что где-то есть человек<br>
+      который думает о тебе прямо сейчас
+    </p>
+    <button class="btn yes" onclick="go('p3c')">Дальше</button>
+  </div>
+</section>
+
+<!-- p3c второй ребус -->
+<section id="p3c">
+  <div class="card">
+    <h1>Ещё один ребус 💭</h1>
+    <p>💌 + 👧 = ?</p>
+    <small>не одно слово, а чувство</small>
+    <input id="answer2" placeholder="твой ответ">
+    <button class="btn yes" onclick="check2()">Ответить</button>
+  </div>
+</section>
+
+<!-- p4 -->
+<section id="p4">
+  <div class="card">
+    <div class="cat">
+      <img src="https://raw.githubusercontent.com/cernysevegor1-pixel/134/main/besito-catlove.gif"
+           style="width:200px;max-width:80%;border-radius:20px;box-shadow:0 10px 30px rgba(0,0,0,.4)">
+    </div>
+    <p>
+      Я очень жду нашей встречи.<br>
+      Жду лето, чтобы обнять тебя и быть рядом.
+    </p>
+    <button class="btn yes" onclick="go('p5')">Дальше</button>
+  </div>
+</section>
+
+<!-- p5 -->
+<section id="p5">
+  <div class="card">
+    <h1>С днём святого Валентина 💘</h1>
+    <p>
+      Мы уже 11 месяцев вместе.<br>
+      Мы многое прошли, научились ценить друг друга<br>
+      и идти дальше, держась за руки.
+    </p>
+    <button class="btn yes" onclick="go('p6')">Последнее</button>
+  </div>
+</section>
+
+<!-- p6 -->
+<section id="p6">
+  <div class="card">
+    <h1>Люблю тебя очень сильно, киса 💖</h1>
+    <p>
+      С днём Валентина тебя, моя самая лучшая и любимая девочка.<br>
+      Ты мой мир.
+    </p>
+  </div>
+</section>
+
+<script>
+function go(id){
+  document.querySelectorAll('section').forEach(s=>s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+
+function check(){
+  const v=document.getElementById('answer').value.toLowerCase().trim();
+  if(v==='я люблю тебя моя кошка'||v==='я люблю тебя') go('p3b');
+  else alert('Подумай ещё 💕');
+}
+
+function check2(){
+  const v=document.getElementById('answer2').value.toLowerCase().trim();
+  if(v==='любовь') go('p4');
+  else alert('Подумай сердцем 💗');
+}
+
+const noBtn=document.getElementById('noBtn');
+function moveNo(){
+  noBtn.style.left=Math.random()*70+'%';
+  noBtn.style.top=Math.random()*70+'%';
+}
+noBtn.addEventListener('mouseover',moveNo);
+noBtn.addEventListener('touchstart',moveNo);
+</script>
+
+</body>
+</html>
